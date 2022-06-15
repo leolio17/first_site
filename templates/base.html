@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <!-- first_site CSS -->
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">-->
+    <title>Hello, lyc first website!</title>
+</head>
+<style>
+    body {
+        background-color: ivory;
+        
+    }
+    body::before{
+        content:"";
+        background-image: url(https://pixabay.com/get/g98baf23804a37bd372cdf191a936215f5a648a5bb833eb4d02cc92988c0e08e46fbae61ab0394641b07f7a6c06dac60403182dccf4874889bdbc63f027d393918af3a5087978434b0451295104e58f3b_1920.jpg);
+        background-size: cover;
+        opacity: 0.6;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        z-index: -1;
+    }
+    
+</style>
+    
+<body>
+</body>
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+</body>
+</html>
