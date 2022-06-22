@@ -1,7 +1,15 @@
 <!-- 네비게이션바 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+<head>
+    <style>
+        ul {
+           padding: 0; 
+        }
+        li{ display: inline}
+    </style>
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'first_site:index' %}">
+        <a class="navbar-brand lyc-font" href="{% url 'first_site:index' %}">
             <img src="/static/home-icon.png" alt="cant loading the image" width="50" height="50" class="d-inline-block align-text-middle">
             Home
         </a>
@@ -16,14 +24,22 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"">사이트 소개</a>
+                    <a class="nav-link lyc-font" href="{% url 'first_site:intro' %}">intro.</a>
+                </li>
+                <li class="nav-item lyc-font">
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (log out)</a>
+                    {% else %}
+                    <a class="nav-link" href="{% url 'common:login' %}">log in</a>
+                    {% endif %}
+                </li>
+                <li class="lyc-font">
+                    {% if not user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'common:signup' %}">sign in</a>
+                    {% endif %}
                 </li>
                 <li class="nav-item">
-                    {% if user.is_authenticated %}
-                    <a class="nav-link" href="{% url 'common:logout' %}">{{ user.username }} (로그아웃)</a>
-                    {% else %}
-                    <a class="nav-link" href="{% url 'common:login' %}">로그인</a>
-                    {% endif %}
+                    <p class="nav-link lyc-font-s">로그인 시간 : {{user.last_login}}</p>
                 </li>
             </ul>
         </div>
