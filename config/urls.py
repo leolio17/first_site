@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from first_site import views
 
 #edited
 
@@ -22,4 +23,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('first_site/', include('first_site.urls')),
+    path('common/', include('common.urls')),
+    path('', views.index, name='index'), # '/' 에 해당되는 path
 ]
