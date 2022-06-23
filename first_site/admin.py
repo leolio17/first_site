@@ -4,9 +4,13 @@ from django.contrib import admin
 from .models import Answer, Question
 
 class QuestionAdmin(admin.ModelAdmin):
-    search_fields = ['subject']
+    search_fields = ['subject', 'content']
+
+class AnswerAdmin(admin.ModelAdmin):
+    search_fields = ['content']
 
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Answer, AnswerAdmin)
 
 #admin.site.register(Question)
 #admin.site.register(Answer)

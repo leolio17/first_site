@@ -12,13 +12,22 @@ from django.contrib.auth.decorators import login_required
 def intro(request):
     return render(request, 'first_site/intro.html')
 
-def index(request):
+def board_list(request):
+    page = request.GET.get('page', '1')
+    question_list = Question.objects.order_by('-create_date')
+    paginator = Paginator(question_list, 15)
+    page_obj = paginator.get_page(page)
+    context = {'question_list': page_obj}
+    return render(request, 'first_site/board_list.html', context)
+    
+
+def homescreen(request):
     page = request.GET.get('page', '1')     #페이지
     question_list = Question.objects.order_by('-create_date')
     paginator = Paginator(question_list, 15)
     page_obj = paginator.get_page(page)
     context = {'question_list': page_obj}
-    return render(request, 'first_site/question_list.html', context)
+    return render(request, 'first_site/homescreen.html', context)
     #return HttpResponse("===첫 페이지 ===")
 
 
@@ -55,7 +64,7 @@ def question_create(request):
             question.author = request.user
             question.create_date = timezone.now()
             question.save()
-            return redirect('first_site:index')
+            return redirect('first_site:board_list')
     else:
         form = QuestionForm()
     context = {'form': form}

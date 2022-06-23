@@ -1,3 +1,4 @@
+{% load first_site_filter %}
 <!-- 네비게이션바 -->
 <head>
     <style>
@@ -9,7 +10,7 @@
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
     <div class="container-fluid">
-        <a class="navbar-brand lyc-font" href="{% url 'first_site:index' %}">
+        <a class="navbar-brand lyc-font" href="{% url 'first_site:homescreen' %}">
             <img src="/static/home-icon.png" alt="cant loading the image" width="50" height="50" class="d-inline-block align-text-middle">
             Home
         </a>
@@ -23,8 +24,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link lyc-font" href="{% url 'first_site:intro' %}">intro.</a>
+                <li class="nav-item lyc-font">
+                    <a class="nav-link" href="{% url 'first_site:intro' %}">intro.</a>
+                </li>
+                <li class="nav-item lyc-font">
+                    <a class="nav-link" href="{% url 'first_site:board_list' %}">board</a>
                 </li>
                 <li class="nav-item lyc-font">
                     {% if user.is_authenticated %}
@@ -39,7 +43,7 @@
                     {% endif %}
                 </li>
                 <li class="nav-item">
-                    <p class="nav-link lyc-font-s">로그인 시간 : {{user.last_login}}</p>
+                    <p class="nav-link lyc-font-s">logined:{{user.last_login|date:"G:i/md "}} </p>
                 </li>
             </ul>
         </div>

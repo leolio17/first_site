@@ -24,5 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('first_site/', include('first_site.urls')),
     path('common/', include('common.urls')),
-    path('', views.index, name='index'), # '/' 에 해당되는 path
+    path('', views.homescreen, name='homescreen'), # '/' 에 해당되는 path
 ]
