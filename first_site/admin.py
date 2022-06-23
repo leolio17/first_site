@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Answer, Question
+from .models import Answer, Question, Video
 
 class QuestionAdmin(admin.ModelAdmin):
     search_fields = ['subject', 'content']
@@ -9,8 +9,9 @@ class QuestionAdmin(admin.ModelAdmin):
 class AnswerAdmin(admin.ModelAdmin):
     search_fields = ['content']
 
+
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer, AnswerAdmin)
-
+admin.site.register(Video)
 #admin.site.register(Question)
 #admin.site.register(Answer)

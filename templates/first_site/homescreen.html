@@ -1,5 +1,22 @@
 {% extends 'base.html' %}
-{% load first_site_filter %}
 {% block content %}
-hello~~~~~~~~~~~~~~ home screen
+<style>
+    body { padding: 0px; margin: 0px; }
+    .lyc-box { width: 100%; height: auto; overflow: hidden;margin: 10px auto; position: relative; }
+    video { width: 100%; }
+    .lyc-text { position: absolute; top: 50%; width: 100%; }
+    .lyc-text p { margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff; }
+  </style>
+
+<body>
+
+<div class="content container">
+    <div class="lyc-box">
+        <video src="/static/Aurora Borealis - 74183.mp4" controls loop muted autoplay> cant play the video file</video>
+        <div class="lyc-text lyc-font">
+            <p>Welcome to my website</p>
+        </div>
+    </div>
+</div>
+</body>
 {% endblock %}

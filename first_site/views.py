@@ -8,6 +8,9 @@ from django.utils import timezone
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
+#for video
+from .models import Video
+
 # Create your views here.
 def intro(request):
     return render(request, 'first_site/intro.html')
@@ -26,7 +29,11 @@ def homescreen(request):
     question_list = Question.objects.order_by('-create_date')
     paginator = Paginator(question_list, 15)
     page_obj = paginator.get_page(page)
-    context = {'question_list': page_obj}
+
+    #for video
+    video_list = Video.objects.all()
+
+    context = {'question_list': page_obj, 'video_list': video_list}
     return render(request, 'first_site/homescreen.html', context)
     #return HttpResponse("===첫 페이지 ===")
 
