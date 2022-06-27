@@ -2,33 +2,54 @@
 {% load first_site_filter %}
 {% block content %}
 
-<p class="color: $info">
-hello
+<p class="lyc-font">
+사이트 소개 
 </p>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            1 column
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col lyc-font-s">
+          <p>lyc</p>
+            <ul class="nav nav-pills">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tab1">전체 글</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab2">study</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab3">etc</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tab4">to_do_list</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="tab1">
+                <p> All of the board_list </p>
+              </div>
+              <div class="tab-pane fade" id="tab2">
+                <p>study category in the board_list</p>
+              </div>
+              <div class="tab-pane fade" id="tab3">
+                <p>etc category in the board_list</p>
+              </div>
+              <div class="tab-pane fade" id="tab4">
+                <p>todo in the board_list</p>
+              </div>
+            </div>
         </div>
-        <div class="col">
-            2 column
-        </div>
-        <div class="col">
-            3 column
-        </div>
+      </div>
     </div>
-    <div class="row">
-        <div class="col">
-            1 column
-        </div>
-        <div class="col">
-            2 column
-        </div>
-        <div class="col">
-            3 column
-        </div>
-    </div>
-</div>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  </body>
+</html>
 
 {% endblock %}

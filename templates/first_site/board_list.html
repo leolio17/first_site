@@ -3,6 +3,20 @@
 {% block content %}
 <div class="container my-3">
     <table class="table">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#tab1">전체 글</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab2">study</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab3">etc</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab4">to_do_list</a>
+            </li>
+        </ul>
         <thead>
         <tr class="text-center table-dark lyc-font-s">
             <th>번호</th>
@@ -74,6 +88,10 @@
     </ul>
     <!-- 페이징처리 끝 -->
     <a href="{% url 'first_site:question_create' %}" class="btn btn-primary">글쓰기</a>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </div>
 {% endblock %}
 
