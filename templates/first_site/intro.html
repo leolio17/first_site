@@ -2,8 +2,8 @@
 {% load first_site_filter %}
 {% block content %}
 
-<p class="lyc-font">
-사이트 소개 
+<p class="lyc-font-s">
+- 기능 적용 전 사전 테스트 용 페이지
 </p>
 <html lang="ko">
   <head>
@@ -11,41 +11,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="container">
-      <div class="row">
-        <div class="col lyc-font-s">
-          <p>lyc</p>
-            <ul class="nav nav-pills">
-              <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#tab1">전체 글</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab2">study</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab3">etc</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab4">to_do_list</a>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane fade show active" id="tab1">
-                <p> All of the board_list </p>
-              </div>
-              <div class="tab-pane fade" id="tab2">
-                <p>study category in the board_list</p>
-              </div>
-              <div class="tab-pane fade" id="tab3">
-                <p>etc category in the board_list</p>
-              </div>
-              <div class="tab-pane fade" id="tab4">
-                <p>todo in the board_list</p>
-              </div>
-            </div>
+    <div class="container my-3">
+        <!-- 게시판에 탭 적용  -->
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#tab1">All</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#tab2">Question</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#tab3">Etc</a>
+          </li>
+        </ul>
+        <table class="table">
+        <thead>
+          <tr class="text-center table-dark lyc-font-s">
+              <th>번호</th>
+              <th style="width:60%">제목</th>
+              <th>글쓴이</th>
+              <th>작성일시</th>
+          </tr>
+        </thead>
+        </table>
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="tab1">
+            <table class="table">
+            <tbody>
+              {% if question_list %}
+              {% for question in question_list %}
+                <tr class="text-center table-white">
+                  <td>
+                    <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
+                    {{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}
+                  </td>
+                  <td style="width:70%">
+                    <a href="{% url 'first_site:detail' question.id %}">{{ question.subject }}</a>
+                    {% if question.answer_set.count > 0 %}
+                    <span class="text-danger small mx-2">({{ question.answer_set.count }})</span>
+                    {% endif %}
+                  </td>
+                  <!-- 글쓴이 추가 -->
+                  <td>{{question.author.username}}</td>
+                  <td style="text-align: right;">{{ question.create_date }}</td>
+                </tr>
+              {% endfor %}
+              {% else %}
+              <tr>
+                <td colspan="4">nothing contents</td>
+              </tr>
+              {% endif %}
+            </tbody>
+            </table>
+          </div>
+          <div class="tab-pane fade" id="tab2">
+            <p class="lyc-font"> There is no question post.</p>
+          </div>
+          <div class="tab-pane fade" id="tab3">
+            <p class="lyc-font"> nothing contents</p>
+          </div>
         </div>
-      </div>
+      
     </div>
+  
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
