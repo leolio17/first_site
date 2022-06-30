@@ -18,16 +18,29 @@ def intro(request):
     question_list = Question.objects.order_by('-create_date')
     paginator = Paginator(question_list, 15)
     page_obj = paginator.get_page(page)
-    category = Question.objects.all()
-    context = {'question_list': page_obj, 'category': category}
+    context = {'question_list': page_obj}
     return render(request, 'first_site/intro.html', context)
 
 def board_list(request):
     page = request.GET.get('page', '1')
     question_list = Question.objects.order_by('-create_date')
-    paginator = Paginator(question_list, 15)
+
+    ## category filter
+    qna_obj = Question.objects.filter(category="qna").order_by('-create_date')
+    study_obj = Question.objects.filter(category="study").order_by('-create_date')
+    etc_obj = Question.objects.filter(category="etc").order_by('-create_date')
+
+    paginator = Paginator(question_list, 10)
     page_obj = paginator.get_page(page)
-    context = {'question_list': page_obj}
+    ## category filter
+    paginator_qna = Paginator(qna_obj, 10)
+    page_obj_qna = paginator_qna.get_page(page)
+    paginator_study = Paginator(study_obj, 10)
+    page_obj_study = paginator_study.get_page(page)
+    paginator_etc = Paginator(etc_obj, 10)
+    page_obj_etc = paginator_etc.get_page(page)
+
+    context = {'question_list': page_obj, 'qna_list': page_obj_qna, 'study_list': page_obj_study, 'etc_list': page_obj_etc}
     return render(request, 'first_site/board_list.html', context)
     
 

@@ -12,7 +12,7 @@ class Question(models.Model):
     modify_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.subject
+        return (self.subject)
 
 
 class Answer(models.Model):
