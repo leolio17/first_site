@@ -18,7 +18,8 @@ def intro(request):
     question_list = Question.objects.order_by('-create_date')
     paginator = Paginator(question_list, 15)
     page_obj = paginator.get_page(page)
-    context = {'question_list': page_obj}
+    category = Question.objects.all()
+    context = {'question_list': page_obj, 'category': category}
     return render(request, 'first_site/intro.html', context)
 
 def board_list(request):

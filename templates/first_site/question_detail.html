@@ -24,15 +24,15 @@
             </div>
             <div class="my-3">
                 {% if request.user == question.author %}
-                <a href="{% url 'first_site:question_modify' question.id %}" class="btn btn-sm btn-outline-secondary">수정</a>
+                <a href="{% url 'first_site:question_modify' question.id %}" class="btn btn-sm btn-outline-secondary">Modify</a>
                 <a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary"
-                        data-uri="{% url 'first_site:question_delete' question.id %}">삭제</a>
+                        data-uri="{% url 'first_site:question_delete' question.id %}">Delete</a>
                 {% endif %}
             </div>
         </div>
     </div>
     <!-- 답변 -->
-    <h5 class="border-bottom my-3 py-2">{{question.answer_set.count}}개의 답변이 있습니다.</h5>
+    <h5 class="border-bottom my-3 py-2">There are {{question.answer_set.count}} reply</h5>
     {% for answer in question.answer_set.all %}
     <div class="card my-3">
         <div class="card-body">
@@ -46,7 +46,7 @@
             <div class="my-3">
                 {% if request.user == answer.author %}
                 <a href="{% url 'first_site:answer_modify' answer.id  %}" 
-                   class="btn btn-sm btn-outline-secondary">수정</a>
+                   class="btn btn-sm btn-outline-secondary">Modify</a>
                 {% endif %}
             </div>
         </div>
@@ -70,11 +70,11 @@
         {% endif %}
         <!-- 오류표시 End -->
         <div class="mb-3">
-            <label for="content" class="form-label">답변내용</label>
+            <label for="content" class="form-label">Reply</label>
             <textarea {% if not user.is_authenticated %}disabled{% endif %}
                       name="content" id="content" class="form-control" rows="10"></textarea>
         </div>
-        <input type="submit" value="답변등록" class="btn btn-primary">
+        <input type="submit" value="Submit reply" class="btn btn-primary">
     </form>
 </div>
 {% endblock %}
