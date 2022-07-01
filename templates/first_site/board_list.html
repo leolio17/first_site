@@ -16,21 +16,18 @@
             <a class="nav-link" data-toggle="tab" href="#tab4">Etc</a>
         </li>
     </ul>
-    <table class="table">
-        <!-- 게시판에 탭 적용  -->
-        <thead>
-        <tr class="text-center table-dark lyc-font-s">
-            <th>No.</th>
-            <th>category</th>
-            <th style="width:50%">title</th>
-            <th>author</th>
-            <th>date</th>
-        </tr>
-        </thead>
-    </table>
     <div class="tab-content">
         <div class="tab-pane fade show active" id="tab1">
             <table class="table">
+            <thead>
+                <tr class="text-center table-dark lyc-font-s">
+                    <td>No.</td>
+                    <td>category</td>
+                    <td style="width:60%">title</td>
+                    <td>author</td>
+                    <td>date</td>
+                </tr>
+            </thead>
             <tbody>
                 {% if question_list %}
                 {% for question in question_list %}
@@ -42,7 +39,7 @@
                     <td>
                         {{question.category}}
                     </td>
-                    <td style="width:50%">
+                    <td>
                         <a href="{% url 'first_site:detail' question.id %}">{{ question.subject }}</a>
                         {% if question.answer_set.count > 0 %}
                         <span class="text-danger small mx-2">({{ question.answer_set.count }})</span>
@@ -63,6 +60,15 @@
         </div>
         <div class="tab-pane fade" id="tab2">
             <table class="table">
+                <thead>
+                    <tr class="text-center table-dark lyc-font-s">
+                        <td>No.</td>
+                        <td>category</td>
+                        <td style="width:60%">title</td>
+                        <td>author</td>
+                        <td>date</td>
+                    </tr>
+                </thead>
                 <tbody>
                     {% if qna_list %}
                     {% for question in qna_list %}
@@ -74,7 +80,7 @@
                         <td>
                             {{question.category}}
                         </td>
-                        <td style="width:50%">
+                        <td>
                             <a href="{% url 'first_site:detail' question.id %}">{{ question.subject }}</a>
                             {% if question.answer_set.count > 0 %}
                             <span class="text-danger small mx-2">({{ question.answer_set.count }})</span>
@@ -95,6 +101,15 @@
         </div>
         <div class="tab-pane fade" id="tab3">
             <table class="table">
+                <thead>
+                    <tr class="text-center table-dark lyc-font-s">
+                        <td>No.</td>
+                        <td>category</td>
+                        <td style="width:60%">title</td>
+                        <td>author</td>
+                        <td>date</td>
+                    </tr>
+                </thead>
                 <tbody>
                     {% if study_list %}
                     {% for question in study_list %}
@@ -106,7 +121,7 @@
                         <td>
                             {{question.category}}
                         </td>
-                        <td style="width:50%">
+                        <td>
                             <a href="{% url 'first_site:detail' question.id %}">{{ question.subject }}</a>
                             {% if question.answer_set.count > 0 %}
                             <span class="text-danger small mx-2">({{ question.answer_set.count }})</span>
@@ -127,6 +142,15 @@
         </div>
         <div class="tab-pane fade" id="tab4">
             <table class="table">
+                <thead>
+                    <tr class="text-center table-dark lyc-font-s">
+                        <td>No.</td>
+                        <td>category</td>
+                        <td style="width:60%">title</td>
+                        <td>author</td>
+                        <td>date</td>
+                    </tr>
+                </thead>
                 <tbody>
                     {% if etc_list %}
                     {% for question in etc_list %}
@@ -138,7 +162,7 @@
                         <td>
                             {{question.category}}
                         </td>
-                        <td style="width:50%">
+                        <td>
                             <a href="{% url 'first_site:detail' question.id %}">{{ question.subject }}</a>
                             {% if question.answer_set.count > 0 %}
                             <span class="text-danger small mx-2">({{ question.answer_set.count }})</span>
